@@ -26,6 +26,9 @@ class _GroupButtonsState extends State<GroupButtons> {
             backgroundColor: MaterialStateProperty.all<Color>(
               _activeButton == 0 ? Colors.green : Colors.white,
             ),
+            foregroundColor: MaterialStateProperty.all<Color>(
+    _activeButton == 0 ? Colors.white : Colors.black,
+    ),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10), // Set the border radius here
@@ -44,6 +47,9 @@ class _GroupButtonsState extends State<GroupButtons> {
             backgroundColor: MaterialStateProperty.all<Color>(
               _activeButton == 1 ? Colors.green : Colors.white,
             ),
+            foregroundColor: MaterialStateProperty.all<Color>(
+              _activeButton == 1 ? Colors.white : Colors.black,
+            ),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10), // Set the border radius here
@@ -61,6 +67,9 @@ class _GroupButtonsState extends State<GroupButtons> {
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(
               _activeButton == 2 ? Colors.green : Colors.white,
+            ),
+            foregroundColor: MaterialStateProperty.all<Color>(
+              _activeButton == 2 ? Colors.white : Colors.black,
             ),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(

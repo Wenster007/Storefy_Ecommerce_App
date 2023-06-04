@@ -1,4 +1,6 @@
+import 'package:ecommerce/data/dummy_data.dart';
 import 'package:ecommerce/widgets/group_buttons.dart';
+import 'package:ecommerce/widgets/product_item.dart';
 import 'package:ecommerce/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +9,9 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // Widget activeButtonScreen = ListView.builder(itemCount: dummyData.length,itemBuilder: (ctx, index) => ,)
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -31,12 +36,13 @@ class MainScreen extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            SearchBar(),
-            SizedBox(height: 16,),
-            Text("Products", style: TextStyle(color: Colors.black, fontSize: 22),),
-            SizedBox(height: 16,),
-            GroupButtons(),
+          children: [
+            const SearchBar(),
+            const SizedBox(height: 16,),
+            const Text("Products", style: TextStyle(color: Colors.black, fontSize: 22),),
+            const SizedBox(height: 16,),
+            const GroupButtons(),
+            ProductItem(product: dummyData[0]),
           ],
         ),
       ),
