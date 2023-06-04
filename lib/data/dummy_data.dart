@@ -10,7 +10,7 @@ Product(
 ['Cookies'],
 ),
 Product(
-'https://example.com/candy1.jpg',
+'https://itsugar.com/media/catalog/product/g/u/gummy_bear_on_stick_2023_front.jpg',
 'Gummy Bears',
 'Soft and chewy gummy bears in various fruit flavors.',
 4,
@@ -18,7 +18,7 @@ Product(
 ['Candies'],
 ),
 Product(
-'https://example.com/cookie2.jpg',
+'https://brokenovenbaking.com/wp-content/uploads/2023/01/oatmeal-raisin-cookies-6-1.jpg',
 'Oatmeal Raisin Cookies',
 'Classic oatmeal cookies with sweet raisins and a hint of cinnamon.',
 3,
@@ -26,7 +26,7 @@ Product(
 ['Cookies'],
 ),
 Product(
-'https://example.com/candy2.jpg',
+'https://media-cldnry.s-nbcnews.com/image/upload/newscms/2020_38/1610612/sour-patch-just-blue-kb-main-200917.jpg',
 'Sour Patch Kids',
 'Tangy and sweet sour patch candies in assorted fruity flavors.',
 5,
@@ -34,7 +34,7 @@ Product(
 ['Candies'],
 ),
 Product(
-'https://example.com/cookie3.jpg',
+'https://www.the-girl-who-ate-everything.com/wp-content/uploads/2010/01/macadamia-nut-white-chocolate-cookies-07.jpg',
 'White Chocolate Macadamia Nut Cookies',
 'Buttery cookies loaded with chunks of white chocolate and crunchy macadamia nuts.',
 4,
@@ -42,7 +42,7 @@ Product(
 ['Cookies'],
 ),
 Product(
-'https://example.com/candy3.jpg',
+'https://www.qcnews.com/wp-content/uploads/sites/109/2023/01/MMsAP22021645371457.jpg?w=1280',
 'M&M\'s',
 'Colorful chocolate candies with a crunchy candy shell.',
 5,
@@ -50,7 +50,7 @@ Product(
 ['Candies'],
 ),
 Product(
-'https://example.com/cookie4.jpg',
+'https://preppykitchen.com/wp-content/uploads/2021/07/Peanut-Butter-Cookie-Recipe-n.jpg',
 'Peanut Butter Cookies',
 'Rich and nutty peanut butter cookies with a soft and chewy texture.',
 4,
@@ -58,7 +58,7 @@ Product(
 ['Cookies'],
 ),
 Product(
-'https://example.com/candy4.jpg',
+'https://cdn-tp1.mozu.com/9046-11441/cms/11441/files/1717d1ab-8e9f-4370-8eb6-e34dce41b1ea?max=650',
 'Jelly Beans',
 'Assorted jelly beans in a variety of fruity flavors.',
 3,
@@ -66,7 +66,7 @@ Product(
 ['Candies'],
 ),
 Product(
-'https://example.com/cookie5.jpg',
+'https://simplyhomecooked.com/wp-content/uploads/2021/06/double-chocolate-cookies.jpg',
 'Double Chocolate Cookies',
 'Indulgent double chocolate cookies with a fudgy and decadent taste.',
 5,
@@ -74,7 +74,7 @@ Product(
 ['Cookies'],
 ),
 Product(
-'https://example.com/candy5.jpg',
+  'https://i5.walmartimages.com/asr/1564a73f-82fc-419a-b16c-2d96c183434b_1.3d93430abfbddfc557b3973090435fe7.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF',
 'Licorice Twists',
 'Twisted strands of chewy licorice candy in various flavors.',
 4,
@@ -82,7 +82,7 @@ Product(
 ['Candies'],
 ),
 Product(
-'https://example.com/cookie6.jpg',
+'https://celebratingsweets.com/wp-content/uploads/2021/12/Frosted-Sugar-Cookies-7.jpg',
 'Sugar Cookies',
 'Classic sugar cookies with a sweet and buttery flavor, perfect for decorating.',
 4,
@@ -90,7 +90,7 @@ Product(
 ['Cookies'],
 ),
 Product(
-'https://example.com/candy6.jpg',
+'https://static.tossdown.com/images/1f0847dff53f7285b790cf969cbae1a1.jpeg',
 'Skittles',
 'Colorful bite-sized candies with fruity flavors.',
 5,
@@ -98,7 +98,7 @@ Product(
 ['Candies'],
 ),
 Product(
-'https://example.com/cookie7.jpg',
+'https://lilluna.com/wp-content/uploads/2022/07/snickerdoodles-final3-resize-15.jpg',
 'Snickerdoodle Cookies',
 'Soft and chewy cookies coated in cinnamon and sugar.',
 4,

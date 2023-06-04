@@ -9,12 +9,13 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.white,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               height: 150,
               width: 120,
               child: ClipRRect(
@@ -37,7 +38,7 @@ class ProductItem extends StatelessWidget {
                 ),
                 Text(
                   product.title,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                 ),
                 const SizedBox(
                   height: 8,
@@ -75,7 +76,7 @@ class ProductItem extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.favorite_border),
+                icon: const Icon(Icons.favorite_border),
               ),
               const SizedBox(height: 45,),
               IconButton(
