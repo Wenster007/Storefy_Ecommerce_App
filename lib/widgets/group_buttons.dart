@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class GroupButtons extends StatefulWidget {
-  const GroupButtons({Key? key}) : super(key: key);
+  const GroupButtons({Key? key, required this.onGroupButtonClick}) : super(key: key);
+  final void Function (int index) onGroupButtonClick;
 
   @override
   State<GroupButtons> createState() => _GroupButtonsState();
@@ -13,7 +14,9 @@ class _GroupButtonsState extends State<GroupButtons> {
   void _onButtonPressed(int buttonIndex) {
     setState(() {
       _activeButton = buttonIndex;
+      widget.onGroupButtonClick(buttonIndex);
     });
+
   }
 
   @override

@@ -1,16 +1,44 @@
 import 'package:ecommerce/data/dummy_data.dart';
+import 'package:ecommerce/model/product.dart';
 import 'package:ecommerce/widgets/group_buttons.dart';
 import 'package:ecommerce/widgets/product_item_list.dart';
 import 'package:ecommerce/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  State<MainScreen> createState() => _MainScreenState();
+}
 
-    Widget activeButtonScreen = ProductItemList(currentDataList: dummyData);
+class _MainScreenState extends State<MainScreen> {
+  List<Product> filteredProductList = [];
+
+  //Function of changing activeButtonScreen based on buttons.
+  void _onGroupButtonClick(int index) {
+    if (index == 0) {
+      setState(() {
+        activeButtonScreen = ProductItemList(currentDataList: dummyData);
+      });
+
+    } else if (index == 1) {
+      filteredProductList = dummyData.where((product) => product.categories.contains("Cookies")).toList();
+      setState(() {
+        activeButtonScreen = ProductItemList(currentDataList: filteredProductList);
+      });
+    } else if (index == 2) {
+      filteredProductList = dummyData.where((product) => product.categories.contains("Candies")).toList();
+      setState(() {
+        activeButtonScreen = ProductItemList(currentDataList: filteredProductList);
+      });
+    }
+  }
+
+  Widget activeButtonScreen = ProductItemList(currentDataList: dummyData);
+
+  @override
+  Widget build(BuildContext context) {
 
     return Scaffold(
       appBar: AppBar(
@@ -41,7 +69,7 @@ class MainScreen extends StatelessWidget {
             const SizedBox(height: 16,),
             const Text("Products", style: TextStyle(color: Colors.black, fontSize: 22),),
             const SizedBox(height: 16,),
-            const GroupButtons(),
+            GroupButtons(onGroupButtonClick: _onGroupButtonClick,),
             Expanded(child: activeButtonScreen),
           ],
         ),
