@@ -38,7 +38,7 @@ class _GroupButtonsState extends State<GroupButtons> {
               ),
             ),
             minimumSize: MaterialStateProperty.all<Size>(
-              Size(100, 40), // Set the desired width and height of the button
+              Size(100, 32), // Set the desired width and height of the button
             ),
           ),
           child: const Text('All'),
@@ -59,7 +59,7 @@ class _GroupButtonsState extends State<GroupButtons> {
               ),
             ),
             minimumSize: MaterialStateProperty.all<Size>(
-              Size(100, 40), // Set the desired width and height of the button
+              Size(100, 32), // Set the desired width and height of the button
             ),
           ),
           child: const Text('Cookies'),
@@ -80,7 +80,7 @@ class _GroupButtonsState extends State<GroupButtons> {
               ),
             ),
             minimumSize: MaterialStateProperty.all<Size>(
-              Size(100, 40), // Set the desired width and height of the button
+              Size(100, 32), // Set the desired width and height of the button
             ),
           ),
           child: const Text('Candies'),

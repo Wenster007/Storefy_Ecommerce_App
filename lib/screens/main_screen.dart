@@ -44,7 +44,7 @@ class _MainScreenState extends State<MainScreen> {
       appBar: AppBar(
         title: const Text(
           "STOREFY",
-          style: TextStyle(color: Colors.green, fontSize: 30),
+          style: TextStyle(color: Colors.green, fontSize: 25),
         ),
         actions: [
           IconButton(

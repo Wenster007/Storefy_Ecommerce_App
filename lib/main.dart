@@ -1,4 +1,5 @@
 import 'package:ecommerce/screens/main_screen.dart';
+import 'package:ecommerce/screens/main_screen_tab.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: theme,
-      home: MainScreen(),
+      home: MainScreenTab(),
     );
   }
 }

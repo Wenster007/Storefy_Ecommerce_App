@@ -15,7 +15,7 @@ class ProductItem extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
               height: 150,
               width: 120,
               child: ClipRRect(
@@ -28,20 +28,20 @@ class ProductItem extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 2,
+            // flex: 2,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: 8,
+                  height: 12,
                 ),
                 Text(
                   product.title,
                   style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                 ),
                 const SizedBox(
-                  height: 8,
+                  height: 6,
                 ),
                 Text(
                   product.description,
@@ -52,13 +52,13 @@ class ProductItem extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 8,
                 ),
                 RatingStars(
                   product: product,
                 ),
                 const SizedBox(
-                  height: 8,
+                  height: 6,
                 ),
                 Text(
                   "${product.price}\$",
