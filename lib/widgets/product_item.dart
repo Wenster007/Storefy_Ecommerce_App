@@ -1,11 +1,40 @@
 import 'package:ecommerce/model/product.dart';
 import 'package:ecommerce/widgets/rating_stars.dart';
 import 'package:flutter/material.dart';
+import 'package:ecommerce/data/dummy_data.dart';
 
-class ProductItem extends StatelessWidget {
-  const ProductItem({Key? key, required this.product}) : super(key: key);
+class ProductItem extends StatefulWidget {
+  const ProductItem(
+      {Key? key, required this.product, required this.colorOfFavoriteIcon})
+      : super(key: key);
 
   final Product product;
+  final Color colorOfFavoriteIcon;
+
+  @override
+  State<ProductItem> createState() => _ProductItemState();
+}
+
+class _ProductItemState extends State<ProductItem> {
+  void onClickFavIcon(Product product) {
+    if (favorites.contains(product)) {
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Already added in the favorites"),
+        ),
+      );
+    } else {
+      favorites.add(product);
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Added to favorites"),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -21,7 +50,7 @@ class ProductItem extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(6),
                 child: Image.network(
-                  product.imageUrl,
+                  widget.product.imageUrl,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -37,14 +66,15 @@ class ProductItem extends StatelessWidget {
                   height: 12,
                 ),
                 Text(
-                  product.title,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                  widget.product.title,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 14),
                 ),
                 const SizedBox(
                   height: 6,
                 ),
                 Text(
-                  product.description,
+                  widget.product.description,
                   style: const TextStyle(
                     fontSize: 13,
                     color: Color.fromARGB(200, 77, 74, 74),
@@ -55,13 +85,13 @@ class ProductItem extends StatelessWidget {
                   height: 8,
                 ),
                 RatingStars(
-                  product: product,
+                  product: widget.product,
                 ),
                 const SizedBox(
                   height: 6,
                 ),
                 Text(
-                  "${product.price}\$",
+                  "${widget.product.price}\$",
                   style: const TextStyle(
                       color: Colors.green,
                       fontSize: 24,
@@ -75,16 +105,26 @@ class ProductItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.favorite_border),
+                onPressed: () {
+                  onClickFavIcon(widget.product);
+                },
+                icon: Icon(
+                  widget.colorOfFavoriteIcon != Colors.red
+                      ? Icons.favorite_border
+                      : Icons.favorite,
+                  color: widget.colorOfFavoriteIcon,
+                ),
               ),
-              const SizedBox(height: 45,),
+              const SizedBox(
+                height: 45,
+              ),
               IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.add,
-                    color: Colors.green,
-                  ),),
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.add,
+                  color: Colors.green,
+                ),
+              ),
             ],
           ),
         ],

@@ -15,31 +15,46 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   List<Product> filteredProductList = [];
 
+
   //Function of changing activeButtonScreen based on buttons.
   void _onGroupButtonClick(int index) {
     if (index == 0) {
       setState(() {
-        activeButtonScreen = ProductItemList(currentDataList: dummyData);
+        activeButtonScreen = ProductItemList(
+          currentDataList: dummyData,
+          colorOfFavoriteIcon: Colors.grey,
+        );
       });
-
     } else if (index == 1) {
-      filteredProductList = dummyData.where((product) => product.categories.contains("Cookies")).toList();
+      filteredProductList = dummyData
+          .where((product) => product.categories.contains("Cookies"))
+          .toList();
       setState(() {
-        activeButtonScreen = ProductItemList(currentDataList: filteredProductList);
+        activeButtonScreen = ProductItemList(
+          currentDataList: filteredProductList,
+          colorOfFavoriteIcon: Colors.grey,
+        );
       });
     } else if (index == 2) {
-      filteredProductList = dummyData.where((product) => product.categories.contains("Candies")).toList();
+      filteredProductList = dummyData
+          .where((product) => product.categories.contains("Candies"))
+          .toList();
       setState(() {
-        activeButtonScreen = ProductItemList(currentDataList: filteredProductList);
+        activeButtonScreen = ProductItemList(
+          currentDataList: filteredProductList,
+          colorOfFavoriteIcon: Colors.grey,
+        );
       });
     }
   }
 
-  Widget activeButtonScreen = ProductItemList(currentDataList: dummyData);
+  Widget activeButtonScreen = ProductItemList(
+    currentDataList: dummyData,
+    colorOfFavoriteIcon: Colors.grey,
+  );
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -66,10 +81,19 @@ class _MainScreenState extends State<MainScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SearchBar(),
-            const SizedBox(height: 16,),
-            const Text("Products", style: TextStyle(color: Colors.black, fontSize: 22),),
-            const SizedBox(height: 16,),
-            GroupButtons(onGroupButtonClick: _onGroupButtonClick,),
+            const SizedBox(
+              height: 16,
+            ),
+            const Text(
+              "Products",
+              style: TextStyle(color: Colors.black, fontSize: 22),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            GroupButtons(
+              onGroupButtonClick: _onGroupButtonClick,
+            ),
             Expanded(child: activeButtonScreen),
           ],
         ),

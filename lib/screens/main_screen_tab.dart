@@ -1,3 +1,4 @@
+import 'package:ecommerce/screens/favorite_screen.dart';
 import 'package:ecommerce/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -19,11 +20,11 @@ class _MainScreenTabState extends State<MainScreenTab> {
 
   @override
   Widget build(BuildContext context) {
-    Widget activeTab = MainScreen();
+    Widget activeTab = const MainScreen();
 
     switch (currentTabIndex) {
       case 1:
-        // favourite section
+        activeTab = const FavoriteScreen();
         break;
       case 2:
         //notification section

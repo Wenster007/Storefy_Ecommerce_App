@@ -105,3 +105,5 @@ Product(
 9,
 ['Cookies'],
 ),];
+
+List<Product> favorites = [];
