@@ -14,6 +14,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   List<Product> filteredProductList = [];
+  int currentCategoryIndex = 0;
 
   void onClickFavIcon(Product product) {
     if (favorites.contains(product)) {
@@ -38,33 +39,22 @@ class _MainScreenState extends State<MainScreen> {
   void _onGroupButtonClick(int index) {
     if (index == 0) {
       setState(() {
-        activeButtonScreen = ProductItemList(
-          currentDataList: dummyData,
-          colorOfFavoriteIcon: Colors.grey,
-          onClickFavIcon: onClickFavIcon,
-        );
+        currentCategoryIndex = index;
       });
     } else if (index == 1) {
       filteredProductList = dummyData
           .where((product) => product.categories.contains("Cookies"))
           .toList();
+
       setState(() {
-        activeButtonScreen = ProductItemList(
-          currentDataList: filteredProductList,
-          colorOfFavoriteIcon: Colors.grey,
-          onClickFavIcon: onClickFavIcon,
-        );
+        currentCategoryIndex = index;
       });
     } else if (index == 2) {
       filteredProductList = dummyData
           .where((product) => product.categories.contains("Candies"))
           .toList();
       setState(() {
-        activeButtonScreen = ProductItemList(
-          currentDataList: filteredProductList,
-          colorOfFavoriteIcon: Colors.grey,
-          onClickFavIcon: onClickFavIcon,
-        );
+        currentCategoryIndex = index;
       });
     }
   }
@@ -74,11 +64,25 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
 
-    activeButtonScreen = ProductItemList(
-      currentDataList: dummyData,
-      colorOfFavoriteIcon: Colors.grey,
-      onClickFavIcon: onClickFavIcon,
-    );
+    if (currentCategoryIndex == 0) {
+      activeButtonScreen = ProductItemList(
+        currentDataList: dummyData,
+        colorOfFavoriteIcon: Colors.grey,
+        onClickFavIcon: onClickFavIcon,
+      );
+    } else if (currentCategoryIndex == 1) {
+      activeButtonScreen = ProductItemList(
+        currentDataList: filteredProductList,
+        colorOfFavoriteIcon: Colors.grey,
+        onClickFavIcon: onClickFavIcon,
+      );
+    } else if (currentCategoryIndex == 2) {
+      activeButtonScreen = ProductItemList(
+        currentDataList: filteredProductList,
+        colorOfFavoriteIcon: Colors.grey,
+        onClickFavIcon: onClickFavIcon,
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(

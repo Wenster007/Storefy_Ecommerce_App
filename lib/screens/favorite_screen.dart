@@ -10,11 +10,7 @@ class FavoriteScreen extends StatefulWidget {
   State<FavoriteScreen> createState() => _FavoriteScreenState();
 }
 
-
-
 class _FavoriteScreenState extends State<FavoriteScreen> {
-
-
   void onUnclickFavIcon(Product product) {
     favorites.remove(product);
 
@@ -34,7 +30,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
     );
   }
 
-  late Widget favBody ;
+  late Widget favBody;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +39,15 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
       colorOfFavoriteIcon: Colors.red,
       onClickFavIcon: onUnclickFavIcon,
     );
+
+    if (favorites.isEmpty) {
+      favBody = const Center(
+        child: Text(
+          "No Items in the Favorites",
+          style: TextStyle(fontSize: 14),
+        ),
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(
