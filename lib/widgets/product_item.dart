@@ -5,35 +5,19 @@ import 'package:ecommerce/data/dummy_data.dart';
 
 class ProductItem extends StatefulWidget {
   const ProductItem(
-      {Key? key, required this.product, required this.colorOfFavoriteIcon})
+      {Key? key, required this.product, required this.colorOfFavoriteIcon, required this.onClickFavIcon})
       : super(key: key);
 
   final Product product;
   final Color colorOfFavoriteIcon;
+  final void Function (Product product) onClickFavIcon;
 
   @override
   State<ProductItem> createState() => _ProductItemState();
 }
 
 class _ProductItemState extends State<ProductItem> {
-  void onClickFavIcon(Product product) {
-    if (favorites.contains(product)) {
-      ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Already added in the favorites"),
-        ),
-      );
-    } else {
-      favorites.add(product);
-      ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Added to favorites"),
-        ),
-      );
-    }
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +90,7 @@ class _ProductItemState extends State<ProductItem> {
             children: [
               IconButton(
                 onPressed: () {
-                  onClickFavIcon(widget.product);
+                  widget.onClickFavIcon(widget.product);
                 },
                 icon: Icon(
                   widget.colorOfFavoriteIcon != Colors.red

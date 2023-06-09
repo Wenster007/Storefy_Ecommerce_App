@@ -15,6 +15,24 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   List<Product> filteredProductList = [];
 
+  void onClickFavIcon(Product product) {
+    if (favorites.contains(product)) {
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Already added in the favorites"),
+        ),
+      );
+    } else {
+      favorites.add(product);
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Added to favorites"),
+        ),
+      );
+    }
+  }
 
   //Function of changing activeButtonScreen based on buttons.
   void _onGroupButtonClick(int index) {
@@ -23,6 +41,7 @@ class _MainScreenState extends State<MainScreen> {
         activeButtonScreen = ProductItemList(
           currentDataList: dummyData,
           colorOfFavoriteIcon: Colors.grey,
+          onClickFavIcon: onClickFavIcon,
         );
       });
     } else if (index == 1) {
@@ -33,6 +52,7 @@ class _MainScreenState extends State<MainScreen> {
         activeButtonScreen = ProductItemList(
           currentDataList: filteredProductList,
           colorOfFavoriteIcon: Colors.grey,
+          onClickFavIcon: onClickFavIcon,
         );
       });
     } else if (index == 2) {
@@ -43,18 +63,23 @@ class _MainScreenState extends State<MainScreen> {
         activeButtonScreen = ProductItemList(
           currentDataList: filteredProductList,
           colorOfFavoriteIcon: Colors.grey,
+          onClickFavIcon: onClickFavIcon,
         );
       });
     }
   }
 
-  Widget activeButtonScreen = ProductItemList(
-    currentDataList: dummyData,
-    colorOfFavoriteIcon: Colors.grey,
-  );
+  late Widget activeButtonScreen ;
 
   @override
   Widget build(BuildContext context) {
+
+    activeButtonScreen = ProductItemList(
+      currentDataList: dummyData,
+      colorOfFavoriteIcon: Colors.grey,
+      onClickFavIcon: onClickFavIcon,
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
