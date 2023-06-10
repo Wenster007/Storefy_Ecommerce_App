@@ -1,5 +1,6 @@
 import 'package:ecommerce/screens/favorite_screen.dart';
 import 'package:ecommerce/screens/main_screen.dart';
+import 'package:ecommerce/screens/notification_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainScreenTab extends StatefulWidget {
@@ -27,7 +28,7 @@ class _MainScreenTabState extends State<MainScreenTab> {
         activeTab = const FavoriteScreen();
         break;
       case 2:
-        //notification section
+        activeTab = const NotificationScreen();
         break;
       case 3:
         //myCart section
