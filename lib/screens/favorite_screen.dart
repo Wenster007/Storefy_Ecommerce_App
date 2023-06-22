@@ -6,25 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class FavoriteScreen extends ConsumerWidget {
   FavoriteScreen({Key? key}) : super(key: key);
 
-
-  // void onUnclickFavIcon(Product product) {
-  //   favorites.remove(product);
-  //
-  //   setState(() {
-  //     favBody = ProductItemList(
-  //       currentDataList: favorites,
-  //       colorOfFavoriteIcon: Colors.red,
-  //     );
-  //   });
-  //
-  //   ScaffoldMessenger.of(context).clearSnackBars();
-  //   ScaffoldMessenger.of(context).showSnackBar(
-  //     const SnackBar(
-  //       content: Text("Removed from the favorite list"),
-  //     ),
-  //   );
-  // }
-
   late Widget favBody;
 
   @override
