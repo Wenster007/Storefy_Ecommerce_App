@@ -1,22 +1,22 @@
 import 'package:ecommerce/model/product.dart';
 import 'package:ecommerce/widgets/rating_stars.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerce/data/dummy_data.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ecommerce/provider/favorites_provider.dart';
 
-class ProductItem extends StatefulWidget {
+class ProductItem extends ConsumerStatefulWidget {
   const ProductItem(
-      {Key? key, required this.product, required this.colorOfFavoriteIcon, required this.onClickFavIcon})
+      {Key? key, required this.product, required this.colorOfFavoriteIcon})
       : super(key: key);
 
   final Product product;
   final Color colorOfFavoriteIcon;
-  final void Function (Product product) onClickFavIcon;
 
   @override
-  State<ProductItem> createState() => _ProductItemState();
+  ConsumerState<ProductItem> createState() => _ProductItemState();
 }
 
-class _ProductItemState extends State<ProductItem> {
+class _ProductItemState extends ConsumerState<ProductItem> {
 
 
   @override
@@ -90,7 +90,37 @@ class _ProductItemState extends State<ProductItem> {
             children: [
               IconButton(
                 onPressed: () {
-                  widget.onClickFavIcon(widget.product);
+                  if (widget.colorOfFavoriteIcon == Colors.grey){
+                    final bool wasAdded = ref.read(favoriteProvider.notifier).onClickFavorite(widget.product);
+
+                    if (wasAdded) {
+                      ScaffoldMessenger.of(context).clearSnackBars();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text("Added to favorites"),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).clearSnackBars();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text("Already Added to favorites"),
+                        ),
+                      );
+                    }
+                  } else if (widget.colorOfFavoriteIcon == Colors.red) {
+                    final bool wasRemoved = ref.read(favoriteProvider.notifier).onUnclickFavIcon(widget.product);
+
+                    if (wasRemoved) {
+                      ScaffoldMessenger.of(context).clearSnackBars();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text("Removed from Favorites"),
+                        ),
+                      );
+                    }
+                  }
+
                 },
                 icon: Icon(
                   widget.colorOfFavoriteIcon != Colors.red

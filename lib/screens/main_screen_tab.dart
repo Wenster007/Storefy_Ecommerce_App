@@ -1,3 +1,4 @@
+import 'package:ecommerce/screens/checkout_screen.dart';
 import 'package:ecommerce/screens/favorite_screen.dart';
 import 'package:ecommerce/screens/main_screen.dart';
 import 'package:ecommerce/screens/notification_screen.dart';
@@ -12,7 +13,6 @@ class MainScreenTab extends StatefulWidget {
 
 class _MainScreenTabState extends State<MainScreenTab> {
   int currentTabIndex = 0;
-
   void onTabClick(int index) {
     setState(() {
       currentTabIndex = index;
@@ -25,13 +25,13 @@ class _MainScreenTabState extends State<MainScreenTab> {
 
     switch (currentTabIndex) {
       case 1:
-        activeTab = const FavoriteScreen();
+        activeTab = FavoriteScreen();
         break;
       case 2:
         activeTab = const NotificationScreen();
         break;
       case 3:
-        //myCart section
+        activeTab = const CheckOutScreen();
         break;
       case 4:
         //myProfile section

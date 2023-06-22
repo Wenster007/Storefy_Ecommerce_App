@@ -5,6 +5,7 @@ import 'package:ecommerce/widgets/product_item_list.dart';
 import 'package:ecommerce/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 
+
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
@@ -26,12 +27,7 @@ class _MainScreenState extends State<MainScreen> {
       );
     } else {
       favorites.add(product);
-      ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Added to favorites"),
-        ),
-      );
+
     }
   }
 
@@ -68,19 +64,16 @@ class _MainScreenState extends State<MainScreen> {
       activeButtonScreen = ProductItemList(
         currentDataList: dummyData,
         colorOfFavoriteIcon: Colors.grey,
-        onClickFavIcon: onClickFavIcon,
       );
     } else if (currentCategoryIndex == 1) {
       activeButtonScreen = ProductItemList(
         currentDataList: filteredProductList,
         colorOfFavoriteIcon: Colors.grey,
-        onClickFavIcon: onClickFavIcon,
       );
     } else if (currentCategoryIndex == 2) {
       activeButtonScreen = ProductItemList(
         currentDataList: filteredProductList,
         colorOfFavoriteIcon: Colors.grey,
-        onClickFavIcon: onClickFavIcon,
       );
     }
 

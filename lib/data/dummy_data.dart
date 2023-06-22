@@ -7,6 +7,7 @@ Product(
 'Delicious chocolate chip cookies made with premium ingredients.',
 4,
 10,
+5,
 ['Cookies'],
 ),
 Product(
@@ -15,6 +16,7 @@ Product(
 'Soft and chewy gummy bears in various fruit flavors.',
 4,
 5,
+10,
 ['Candies'],
 ),
 Product(
@@ -23,6 +25,7 @@ Product(
 'Classic oatmeal cookies with sweet raisins and a hint of cinnamon.',
 3,
 8,
+10,
 ['Cookies'],
 ),
 Product(
@@ -31,6 +34,7 @@ Product(
 'Tangy and sweet sour patch candies in assorted fruity flavors.',
 5,
 6,
+15,
 ['Candies'],
 ),
 Product(
@@ -39,6 +43,7 @@ Product(
 'Buttery cookies loaded with chunks of white chocolate and crunchy macadamia nuts.',
 4,
 12,
+3,
 ['Cookies'],
 ),
 Product(
@@ -47,6 +52,7 @@ Product(
 'Colorful chocolate candies with a crunchy candy shell.',
 5,
 4,
+2,
 ['Candies'],
 ),
 Product(
@@ -55,6 +61,7 @@ Product(
 'Rich and nutty peanut butter cookies with a soft and chewy texture.',
 4,
 9,
+7,
 ['Cookies'],
 ),
 Product(
@@ -63,6 +70,7 @@ Product(
 'Assorted jelly beans in a variety of fruity flavors.',
 3,
 3,
+8,
 ['Candies'],
 ),
 Product(
@@ -71,6 +79,7 @@ Product(
 'Indulgent double chocolate cookies with a fudgy and decadent taste.',
 5,
 11,
+5,
 ['Cookies'],
 ),
 Product(
@@ -79,6 +88,7 @@ Product(
 'Twisted strands of chewy licorice candy in various flavors.',
 4,
 7,
+8,
 ['Candies'],
 ),
 Product(
@@ -87,6 +97,7 @@ Product(
 'Classic sugar cookies with a sweet and buttery flavor, perfect for decorating.',
 4,
 8,
+9,
 ['Cookies'],
 ),
 Product(
@@ -95,6 +106,7 @@ Product(
 'Colorful bite-sized candies with fruity flavors.',
 5,
 5,
+11,
 ['Candies'],
 ),
 Product(
@@ -103,7 +115,9 @@ Product(
 'Soft and chewy cookies coated in cinnamon and sugar.',
 4,
 9,
+2,
 ['Cookies'],
 ),];
 
 List<Product> favorites = [];
+List<Product> cart = [];

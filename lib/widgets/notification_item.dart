@@ -16,12 +16,12 @@ class NotificationItem extends StatelessWidget {
         DateTime.now().difference(notification.time).inDays.remainder(60);
 
     return Card(
-      margin: const EdgeInsets.all(8),
+      margin: const EdgeInsets.all(6),
       child: Stack(
         children: [
           Container(
             // height: 100,
-            padding: const EdgeInsets.only(left: 8, top: 16, bottom: 16, right: 16),
+            padding: const EdgeInsets.only( top: 8, bottom: 8, right: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
