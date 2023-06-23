@@ -63,17 +63,14 @@ class _MainScreenState extends State<MainScreen> {
     if (currentCategoryIndex == 0) {
       activeButtonScreen = ProductItemList(
         currentDataList: dummyData,
-        colorOfFavoriteIcon: Colors.grey,
       );
     } else if (currentCategoryIndex == 1) {
       activeButtonScreen = ProductItemList(
         currentDataList: filteredProductList,
-        colorOfFavoriteIcon: Colors.grey,
       );
     } else if (currentCategoryIndex == 2) {
       activeButtonScreen = ProductItemList(
         currentDataList: filteredProductList,
-        colorOfFavoriteIcon: Colors.grey,
       );
     }
 

@@ -11,6 +11,7 @@ class InventoryButton extends StatefulWidget {
 }
 
 class InventoryButtonState extends State<InventoryButton> {
+  int itemsValue = 1;
   int inventoryCount = 0;
 
   @override
@@ -21,16 +22,16 @@ class InventoryButtonState extends State<InventoryButton> {
 
   void increaseInventory() {
     setState(() {
-      inventoryCount++;
-      widget.product.inventory = inventoryCount;
+      if (itemsValue < inventoryCount){
+        itemsValue++;
+      }
     });
   }
 
   void decreaseInventory() {
     setState(() {
-      if (inventoryCount > 0) {
-        inventoryCount--;
-        widget.product.inventory = inventoryCount;
+      if (itemsValue > 0) {
+        itemsValue--;
       }
     });
   }
@@ -40,16 +41,17 @@ class InventoryButtonState extends State<InventoryButton> {
     return Row(
       children: [
         Transform.scale(
-          scale: 0.4,
-          child: ElevatedButton(
+          scale: 0.7,
+          child: TextButton(
             onPressed: decreaseInventory,
             child: const Icon(Icons.remove),
+            style: TextButton.styleFrom(padding: const EdgeInsets.all(2)),
           ),
         ),
-        Text('$inventoryCount'),
+        Text('$itemsValue'),
         Transform.scale(
-          scale: 0.4,
-          child: ElevatedButton(
+          scale: 0.7,
+          child: TextButton(
             onPressed: increaseInventory,
             child: const Icon(Icons.add),
           ),

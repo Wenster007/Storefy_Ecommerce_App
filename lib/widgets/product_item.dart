@@ -1,4 +1,5 @@
 import 'package:ecommerce/model/product.dart';
+import 'package:ecommerce/provider/cart_provider.dart';
 import 'package:ecommerce/widgets/rating_stars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,21 +7,21 @@ import 'package:ecommerce/provider/favorites_provider.dart';
 
 class ProductItem extends ConsumerStatefulWidget {
   const ProductItem(
-      {Key? key, required this.product, required this.colorOfFavoriteIcon})
+      {Key? key, required this.product})
       : super(key: key);
 
   final Product product;
-  final Color colorOfFavoriteIcon;
 
   @override
   ConsumerState<ProductItem> createState() => _ProductItemState();
 }
 
 class _ProductItemState extends ConsumerState<ProductItem> {
-
-
   @override
   Widget build(BuildContext context) {
+    final favoriteList = ref.watch(favoriteProvider);
+    final isFav = favoriteList.contains(widget.product);
+
     return Card(
       color: Colors.white,
       child: Row(
@@ -33,7 +34,7 @@ class _ProductItemState extends ConsumerState<ProductItem> {
               width: 120,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(6),
-                child: Image.network(
+                child: Image.asset(
                   widget.product.imageUrl,
                   fit: BoxFit.cover,
                 ),
@@ -90,7 +91,7 @@ class _ProductItemState extends ConsumerState<ProductItem> {
             children: [
               IconButton(
                 onPressed: () {
-                  if (widget.colorOfFavoriteIcon == Colors.grey){
+                  if (!isFav){
                     final bool wasAdded = ref.read(favoriteProvider.notifier).onClickFavorite(widget.product);
 
                     if (wasAdded) {
@@ -108,7 +109,7 @@ class _ProductItemState extends ConsumerState<ProductItem> {
                         ),
                       );
                     }
-                  } else if (widget.colorOfFavoriteIcon == Colors.red) {
+                  } else if (isFav) {
                     final bool wasRemoved = ref.read(favoriteProvider.notifier).onUnclickFavIcon(widget.product);
 
                     if (wasRemoved) {
@@ -123,17 +124,35 @@ class _ProductItemState extends ConsumerState<ProductItem> {
 
                 },
                 icon: Icon(
-                  widget.colorOfFavoriteIcon != Colors.red
+                  !isFav
                       ? Icons.favorite_border
                       : Icons.favorite,
-                  color: widget.colorOfFavoriteIcon,
+                  color: isFav? Colors.red: Colors.grey,
                 ),
               ),
               const SizedBox(
                 height: 45,
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  final wasAdded = ref.read(cartProvider.notifier).addToCart(widget.product);
+
+                  if (wasAdded) {
+                    ScaffoldMessenger.of(context).clearSnackBars();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Added To Cart"),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).clearSnackBars();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Already in Cart"),
+                      ),
+                    );
+                  }
+                },
                 icon: const Icon(
                   Icons.add,
                   color: Colors.green,

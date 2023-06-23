@@ -13,7 +13,7 @@ class FavoriteScreen extends ConsumerWidget {
     final currFavorites = ref.watch(favoriteProvider);
     favBody = ProductItemList(
       currentDataList: currFavorites,
-      colorOfFavoriteIcon: Colors.red,
+
     );
 
     if (currFavorites.isEmpty) {

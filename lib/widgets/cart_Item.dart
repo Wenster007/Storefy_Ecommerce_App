@@ -16,16 +16,17 @@ class CartItem extends StatelessWidget {
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
+
             children: [
               Expanded(
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-                  height: 150,
+                  height: 120,
                   width: 120,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(6),
-                    child: Image.network(
+                    child: Image.asset(
                       product.imageUrl,
                       fit: BoxFit.cover,
                     ),
@@ -76,10 +77,9 @@ class CartItem extends StatelessWidget {
                   ],
                 ),
               ),
-              Column(),
             ],
           ),
-          Positioned(bottom: 3, right: -8 , child: InventoryButton(product: product, ))
+          Positioned(bottom: -5, right: -8 , child: InventoryButton(product: product, ))
         ],
       ),
     );
