@@ -1,4 +1,5 @@
 import 'package:ecommerce/model/product.dart';
+import 'package:ecommerce/model/cart.dart';
 
 List<Product> dummyData = [
 Product(
@@ -120,4 +121,4 @@ Product(
 ),];
 
 List<Product> favorites = [];
-List<Product> cart = [];
+List<Cart> cart = [];

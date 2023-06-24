@@ -34,7 +34,7 @@ class CartItem extends StatelessWidget {
                 ),
               ),
               Expanded(
-                // flex: 2,
+                flex: 2,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -47,9 +47,7 @@ class CartItem extends StatelessWidget {
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 14),
                     ),
-                    const SizedBox(
-                      height: 6,
-                    ),
+
                     Text(
                       product.description,
                       style: const TextStyle(
@@ -59,27 +57,26 @@ class CartItem extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      height: 8,
+                      height: 4,
                     ),
                     RatingStars(
                       product: product,
                     ),
-                    const SizedBox(
-                      height: 6,
-                    ),
+
                     Text(
                       "${product.price}\$",
                       style: const TextStyle(
                           color: Colors.green,
                           fontSize: 24,
                           fontWeight: FontWeight.w400),
-                    )
+                    ),
+                    const SizedBox(height: 15,),
                   ],
                 ),
               ),
             ],
           ),
-          Positioned(bottom: -5, right: -8 , child: InventoryButton(product: product, ))
+          Positioned(bottom: 6, right: -8 , child: InventoryButton(product: product, ))
         ],
       ),
     );

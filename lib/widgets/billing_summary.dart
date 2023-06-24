@@ -7,7 +7,7 @@ class BillingSummary extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    int productsTotal = ref.read(cartProvider.notifier).getTotal();
+    int productsTotal = ref.watch(cartProvider.notifier).getTotal();
     int shipping = 5;
     int discount = 0;
     int tax = 3;

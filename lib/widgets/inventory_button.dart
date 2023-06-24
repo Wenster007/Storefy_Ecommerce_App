@@ -1,7 +1,9 @@
 import 'package:ecommerce/model/product.dart';
+import 'package:ecommerce/provider/cart_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class InventoryButton extends StatefulWidget {
+class InventoryButton extends ConsumerStatefulWidget {
   final Product product;
 
   const InventoryButton({super.key, required this.product});
@@ -10,15 +12,17 @@ class InventoryButton extends StatefulWidget {
   InventoryButtonState createState() => InventoryButtonState();
 }
 
-class InventoryButtonState extends State<InventoryButton> {
-  int itemsValue = 1;
-  int inventoryCount = 0;
+class InventoryButtonState extends ConsumerState<InventoryButton> {
+  int itemsValue = 1; //initial value of the item
+  int inventoryCount = 0;// the total number of inventory available.
 
   @override
   void initState() {
     super.initState();
     inventoryCount = widget.product.inventory;
   }
+
+
 
   void increaseInventory() {
     setState(() {
@@ -36,6 +40,8 @@ class InventoryButtonState extends State<InventoryButton> {
     });
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -43,7 +49,10 @@ class InventoryButtonState extends State<InventoryButton> {
         Transform.scale(
           scale: 0.7,
           child: TextButton(
-            onPressed: decreaseInventory,
+            onPressed: () {
+              decreaseInventory();
+              ref.read(cartProvider.notifier).updateCartItemQuantity(widget.product, itemsValue);
+            },
             child: const Icon(Icons.remove),
             style: TextButton.styleFrom(padding: const EdgeInsets.all(2)),
           ),
@@ -52,7 +61,10 @@ class InventoryButtonState extends State<InventoryButton> {
         Transform.scale(
           scale: 0.7,
           child: TextButton(
-            onPressed: increaseInventory,
+            onPressed: () {
+              increaseInventory();
+              ref.read(cartProvider.notifier).updateCartItemQuantity(widget.product, itemsValue);
+            },
             child: const Icon(Icons.add),
           ),
         ),

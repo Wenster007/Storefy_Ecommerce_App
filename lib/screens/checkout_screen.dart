@@ -9,7 +9,7 @@ class CheckOutScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentCart = ref.read(cartProvider);
+    final currentCart = ref.watch(cartProvider);
 
     Widget cartBody = Padding(
       padding: const EdgeInsets.symmetric(horizontal: 17),

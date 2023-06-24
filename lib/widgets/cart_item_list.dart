@@ -12,7 +12,7 @@ class CartItemList extends ConsumerWidget {
 
     return ListView.builder(
       itemCount: cartValues.length,
-      itemBuilder: (ctx, index) => CartItem(product: cartValues[index]),
+      itemBuilder: (ctx, index) => CartItem(product: cartValues[index].product),
     );
   }
 }
