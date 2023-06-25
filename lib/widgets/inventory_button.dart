@@ -1,3 +1,4 @@
+import 'package:ecommerce/model/cart.dart';
 import 'package:ecommerce/model/product.dart';
 import 'package:ecommerce/provider/cart_provider.dart';
 import 'package:flutter/material.dart';
@@ -13,14 +14,26 @@ class InventoryButton extends ConsumerStatefulWidget {
 }
 
 class InventoryButtonState extends ConsumerState<InventoryButton> {
+  late final  List<Cart> currentCartList;
   int itemsValue = 1; //initial value of the item
   int inventoryCount = 0;// the total number of inventory available.
+
+  void getCurrentInventoryItem() {
+    for (var cartItem in currentCartList) {
+      if (cartItem.product == widget.product){
+        itemsValue = cartItem.quantity;
+      }
+    }
+  }
 
   @override
   void initState() {
     super.initState();
+    currentCartList = ref.read(cartProvider);
+    getCurrentInventoryItem();
     inventoryCount = widget.product.inventory;
   }
+
 
 
 
@@ -53,8 +66,8 @@ class InventoryButtonState extends ConsumerState<InventoryButton> {
               decreaseInventory();
               ref.read(cartProvider.notifier).updateCartItemQuantity(widget.product, itemsValue);
             },
-            child: const Icon(Icons.remove),
             style: TextButton.styleFrom(padding: const EdgeInsets.all(2)),
+            child: const Icon(Icons.remove),
           ),
         ),
         Text('$itemsValue'),

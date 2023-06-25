@@ -29,17 +29,6 @@ class CartNotifier extends StateNotifier<List<Cart>>{
     }
   }
 
-  int getTotal() {
-    int total = 0;
-
-    for (int i=0; i<state.length; i++) {
-      total = total + (state[i].product.price * state[i].quantity);
-    }
-
-    return total;
-  }
-
-
   //for changing the quantity based on the InventoryButton in cartItem.
   void updateCartItemQuantity(Product product,int newQuantity) {
     state = state.where((element) => element.product != product).toList();
@@ -51,3 +40,4 @@ class CartNotifier extends StateNotifier<List<Cart>>{
 }
 
 final cartProvider = StateNotifierProvider<CartNotifier, List<Cart>>((ref) => CartNotifier());
+

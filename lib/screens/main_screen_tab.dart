@@ -2,6 +2,7 @@ import 'package:ecommerce/screens/checkout_screen.dart';
 import 'package:ecommerce/screens/favorite_screen.dart';
 import 'package:ecommerce/screens/main_screen.dart';
 import 'package:ecommerce/screens/notification_screen.dart';
+import 'package:ecommerce/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainScreenTab extends StatefulWidget {
@@ -34,7 +35,7 @@ class _MainScreenTabState extends State<MainScreenTab> {
         activeTab = const CheckOutScreen();
         break;
       case 4:
-        //myProfile section
+        activeTab = const ProfileScreen();
         break;
     }
 

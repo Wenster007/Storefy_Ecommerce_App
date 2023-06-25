@@ -39,7 +39,7 @@ class CheckOutScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const Text(
           "Cart",
-          style: TextStyle(color: Colors.green),
+          style: TextStyle(color: Colors.green, fontSize: 25),
         ),
       ),
       body: cartBody,

@@ -1,3 +1,4 @@
+import 'package:ecommerce/model/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ecommerce/provider/cart_provider.dart';
@@ -7,7 +8,16 @@ class BillingSummary extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    int productsTotal = ref.watch(cartProvider.notifier).getTotal();
+
+    int getTotal(List<Cart> listOfCart) {
+      int total = 0;
+      for (var cartItem in listOfCart) {
+        total = total + (cartItem.product.price * cartItem.quantity);
+      }
+      return total;
+    }
+
+    final listOfCart = ref.watch(cartProvider);
     int shipping = 5;
     int discount = 0;
     int tax = 3;
@@ -24,12 +34,12 @@ class BillingSummary extends ConsumerWidget {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
               ),
               const Text(
-                  "---------------------------------------------------------------------------------"),
+                  "------------------------------------------------------------------------------"),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text("Subtotal"),
-                  Text("\$$productsTotal",style: const TextStyle(fontWeight: FontWeight.w600),)
+                  Text("\$${getTotal(listOfCart)}",style: const TextStyle(fontWeight: FontWeight.w600),)
                 ],
               ),
               const SizedBox(height: 5,),
@@ -57,12 +67,12 @@ class BillingSummary extends ConsumerWidget {
                 ],
               ),
               const Text(
-                  "---------------------------------------------------------------------------------"),
+                  "-------------------------------------------------------------------------------"),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text("Grand Total", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
-                  Text("\$${productsTotal - discount + shipping + tax}", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
+                  Text("\$${getTotal(listOfCart) - discount + shipping + tax}", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
                 ],
               ),
 
